@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skate2d", "Skate2d.csproj", "{628319B4-729D-DCCA-546A-39D41AF05DF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skate2d.Editor", "Skate2d.Editor.csproj", "{1272F4A1-A34B-3852-DD5D-BE5C0D3B06CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{628319B4-729D-DCCA-546A-39D41AF05DF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{628319B4-729D-DCCA-546A-39D41AF05DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{628319B4-729D-DCCA-546A-39D41AF05DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{628319B4-729D-DCCA-546A-39D41AF05DF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1272F4A1-A34B-3852-DD5D-BE5C0D3B06CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1272F4A1-A34B-3852-DD5D-BE5C0D3B06CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1272F4A1-A34B-3852-DD5D-BE5C0D3B06CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1272F4A1-A34B-3852-DD5D-BE5C0D3B06CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
