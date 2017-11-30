@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\Scripts\RailController.cs" />
     <Compile Include="Assets\Scripts\SkaterController.cs" />
+    <Compile Include="Assets\Scripts\SkaterInput.cs" />
     <Compile Include="Assets\Scripts\WheelsController.cs" />
   </ItemGroup>
   <ItemGroup>

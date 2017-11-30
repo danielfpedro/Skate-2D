@@ -6,16 +6,26 @@ public class SkaterController : MonoBehaviour {
     
     public bool askingForGrind = false;
 
+    [Header("Push")]
+    public float pushForce = 10f;
+    // Depois substituir o rate pela duração da animação de push
+    public float pushRate = 1f;
+    public float nextPush;
+
+    [Header("Ollie")]
+    public float olliePower = 3f;
+    public float ollieRate = 0.1f;
+    public float nextOllie;
+
+    // Desacceleration
+    public float desaccelaration = 1f;
+
     public bool grounded = false;
     public bool grinding = false;
     public bool grabing = false;
 
     public float maxSpeed = 3f;
     public float accelaration = 1f;
-    public float jumpPower = 3f;
-    public float jumpRate = 0.1f;
-
-    private float nextJump;
 
     private float rayDistance = 3f;
 
@@ -67,43 +77,46 @@ public class SkaterController : MonoBehaviour {
 
         float horizontal = Input.GetAxis("Horizontal");
 
-        if (grounded)
-        {
-            rb.velocity = new Vector2(rb.velocity.x + (accelaration * horizontal), rb.velocity.y);
-        }
-        else {
-        }
-        
-
-        if (Input.GetButton("Fire1") && (grounded || grinding) && Time.time > nextJump)
-        {
-            nextJump = Time.time + jumpRate;
-            Debug.Log("Pular");
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-        }
-
-        if (!grounded && Input.GetButton("Jump"))
+        /**if (!grounded && Input.GetButton("Jump"))
         {
             askingForGrind = true;
         }
         else
         {
             askingForGrind = false;
-        }
+        }**/
 
-        if (!grounded && Input.GetButton("Fire2"))
+        /**if (!grounded && Input.GetButton("Fire2"))
         {
             grabing = true;
         } else
         {
             grabing = false;
-        }
+        }**/
 
         if (grabing)
         {
             transform.Rotate(0.0f, 0.0f, -Input.GetAxis("Horizontal") * 5f);
         }
 
+
+    }
+
+    public void Push()
+    {
+        nextPush = Time.time + pushRate;
+        rb.AddRelativeForce(Vector2.right * pushForce, ForceMode2D.Impulse);
+    }
+
+    public void Stop() {
+        float desiredAccelaration = Mathf.Lerp(rb.velocity.x, 0.0f, desaccelaration);
+        rb.velocity = new Vector2(desiredAccelaration, rb.velocity.y);
+    }
+
+    public void Ollie() {
+        nextOllie = Time.time + ollieRate;
+        // rb.velocity = new Vector2(rb.velocity.x, olliePower);
+        rb.AddRelativeForce(Vector2.up * olliePower, ForceMode2D.Impulse);
     }
 }
  
