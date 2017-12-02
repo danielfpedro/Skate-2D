@@ -18,21 +18,50 @@ public class SkaterInput : MonoBehaviour {
 
     private void FixedUpdate()
     {
-
-        if (Input.GetButtonDown("Push") && skaterController.grounded && !skaterController.grinding && Time.time > skaterController.nextPush)
+        // PUSH
+        if (Input.GetButtonDown("Push"))
         {
-            
             skaterController.Push();
         }
 
+        // GRIND
+        if (Input.GetButton("Grind"))
+        {
+            skaterController.Grind();
+        }
+        
+        if (Input.GetButtonUp("Grind"))
+        {
+            skaterController.ReleaseGrind();
+        }
+
+        // STOP
         if (Input.GetButton("Stop"))
         {
             skaterController.Stop();
         }
 
-        if (Input.GetButtonDown("Ollie") && (skaterController.grounded || skaterController.grinding) && Time.time > skaterController.nextOllie)
+
+        if (Input.GetButton("Ollie"))
+        {
+            skaterController.SetChargingOllie(true);
+        }
+        else
+        {
+            skaterController.SetChargingOllie(false);
+        }
+        
+        if (Input.GetButtonUp("Ollie"))
         {
             skaterController.Ollie();
+        }
+
+        if (Input.GetButton("Grab"))
+        {
+            skaterController.Grab();
+        }
+        else {
+            skaterController.GrabRelease();
         }
     }
 }

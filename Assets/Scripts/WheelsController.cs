@@ -16,6 +16,7 @@ public class WheelsController : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log("Stay");
         if (collision.tag == "Cantoneira")
         {
             // collision.gameObject.SetActive(false);
@@ -24,16 +25,11 @@ public class WheelsController : MonoBehaviour {
             /// bool askingForGrind = sc.askingForGrind;
             // Debug.Log("Asking wheel " + sc.askingForGrind);
             BoxCollider2D bc = collision.transform.parent.gameObject.GetComponent<BoxCollider2D>();
-            if (sc.askingForGrind)
+            if (sc.tryinToGrind)
             {
-                sc.grinding = true;
-                bc.isTrigger = false;
-            } else
-            {
-                sc.grinding = false;
-                bc.isTrigger = true;
+                sc.currentRailGrinding = bc;
+                sc.KeepGrind();
             }
-
         }
     }
 
@@ -42,8 +38,7 @@ public class WheelsController : MonoBehaviour {
         if (collision.tag == "Cantoneira")
         {
             SkaterController sc = transform.parent.gameObject.GetComponent<SkaterController>();
-            BoxCollider2D bc = collision.transform.parent.gameObject.GetComponent<BoxCollider2D>();
-            sc.grinding = false;
+            sc.ReleaseGrindAfterDelay();
         }
     }
 }
